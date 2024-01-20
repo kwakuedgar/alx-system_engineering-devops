@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Creates RSA key pair of bit size 4096
+
+ssh-keygen -b 4096 -f school -N betty
+
+
