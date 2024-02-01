@@ -45,7 +45,7 @@ frontend simpledgar-frontend-https
         http-request set-header X-Forwarded-Proto https
         default_backend simpledgar-backend
 
-backend clickviral-backend
+backend simpledgar-backend
         balance roundrobin
         server 443163-web-01 54.234.100.234:80 check
         server 443163-web-02 54.172.249.200:80 check
