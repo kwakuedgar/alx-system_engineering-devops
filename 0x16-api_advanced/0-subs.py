@@ -1,20 +1,28 @@
 #!/usr/bin/python3
-
-""" a script to retrieve the no of subs on a subreddi"""
+"""
+goes to REDDIT asks it for:
+    no. of subscribers
+if an invalid subredit is given return 0
+"""
 
 import requests
 
 
 def number_of_subscribers(subreddit):
-    """return the no of subs on subreddit"""
-
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    headers = {"User-Agent": 'My Agent'}
-    response = requests.get(url, headers=headers, allow_redirects=False)
+    """
+    our prototype:
+    url - returns the suvscribers in .json format
+    headers - gets compatibility with various search engines
+    """
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; \
+            Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)\
+            Chrome/58.0.3029.110 Safari/537.3"}
+    response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
+        """checks for error"""
         data = response.json()
-        no_subs = data.get("data").get("subscribers")
-        return no_subs
+        return data["data"]["subscribers"]
     else:
         return 0
