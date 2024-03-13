@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# server lb-01 login
+
+
+eval $("ssg-agent")
+
+ssh-add ~/.ssh/school
+
+
+ssh ubuntu@54.86.247.247
